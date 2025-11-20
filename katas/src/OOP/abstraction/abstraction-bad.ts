@@ -66,7 +66,11 @@ const emailSender = new EmailSender();
 emailSender.authenticate("usuario@gmail.com", "password123");
 emailSender.connectToServer();
 
-const message = emailSender.buildMessage("destinatario@gmail.com", "Hola", "Este es el cuerpo del mensaje");
+const message = emailSender.buildMessage(
+  "destinatario@gmail.com",
+  "Hola",
+  "Este es el cuerpo del mensaje"
+);
 
 emailSender.sendRawMessage(message);
 emailSender.disconnectFromServer();
