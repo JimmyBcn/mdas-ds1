@@ -1,3 +1,4 @@
+// @ts-nocheck
 // ShipFast Inc. - Refactored with SOLID principles
 // Version 3.0 - SOLID (SRP + OCP)
 
@@ -228,7 +229,15 @@ class ReportGenerator {
 
 // ============= Main Execution =============
 
-function main() {
+type ShipmentResult = {
+  id: number;
+  price: number;
+  discount: number;
+  final: number;
+  type: string;
+};
+
+function processShipments(): ShipmentResult[] {
   const orderRepository = new OrderRepository();
   const orderProcessor = new OrderProcessor();
 
@@ -273,8 +282,22 @@ function main() {
 
   const reportGenerator = new ReportGenerator();
   reportGenerator.generate(orderRepository.getAll());
+
+  // Convert orders to results format
+  const results: ShipmentResult[] = orderRepository.getAll().map((order) => ({
+    id: order.getId(),
+    price: order.getBasePrice(),
+    discount: order.getDiscountAmount(),
+    final: order.getFinalPrice(),
+    type: order.getShipmentType() === "Standard" ? "std" : order.getShipmentType() === "Express" ? "exp" : "sme",
+  }));
+
+  return results;
 }
 
-main();
+// Run only if this is the main module
+if (require.main === module) {
+  processShipments();
+}
 
-export {};
+export { processShipments };

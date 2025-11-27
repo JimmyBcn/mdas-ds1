@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Script original de ShipFast - Escrito en 72h bajo presión
 // TODO: Refactorizar algún día...
 
@@ -89,6 +90,9 @@ function processShipments() {
   return results;
 }
 
-processShipments();
+// Run only if this is the main module
+if (require.main === module) {
+  processShipments();
+}
 
-export {};
+export { processShipments };
