@@ -8,11 +8,24 @@ export class UserController {
   }
 
   handleCreateUser(name: string, email: string): { success: boolean; data?: any; error?: string } {
-    const user = this.userService.createUser(name, email);
-    return {
-      success: true,
-      data: user,
-    };
+    try {
+      const user = this.userService.createUser(name, email);
+      return {
+        success: true,
+        data: user,
+      };
+    } catch (error: Error) {
+      return {
+        success: false,
+        errorCode: error.code
+        errorMessage: error.message,
+        context: {
+          name,
+          email
+        }
+      };
+    }
+  }
   }
 
   handleGetUser(id: number): { success: boolean; data?: any; error?: string } {
