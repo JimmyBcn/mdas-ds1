@@ -14,15 +14,15 @@ export class ProposalValidator extends DocumentValidator {
         return extension == this.PROPOSAL_PDF_EXTENSION || extension == this.PROPOSAL_WORD_EXTENSION;
     }
 
-    public validateMetadata(proposalDate?: string, client?: string): boolean {
-        if (proposalDate == undefined) {
+    public validateMetadata(metadata: Record<string, string>): boolean {
+        if (metadata["proposalDate"] == undefined) {
             return false;
         }
 
-        if (client == undefined) {
+        if (metadata["client"] == undefined) {
             return false;
         }
 
-        return proposalDate.length > this.PROPOSAL_DATE_LENGTH && client.length > this.DOCUMENT_MIN_NAME_LENGTH;
+        return metadata["proposalDate"].length > this.DOCUMENT_MIN_NAME_LENGTH && metadata["client"].length > this.DOCUMENT_MIN_NAME_LENGTH;
     }
 }

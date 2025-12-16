@@ -10,6 +10,14 @@ export class Proposal extends Document {
         this.client = metadata["client"];
     }
 
+    public getMetadata(): Record<string, string> {
+        let metadata: Record<string,string> = {};
+
+        metadata["proposalDate"] = this.proposalDate;
+        metadata["client"] = this.client;
+        return metadata;
+    }
+
     public getProposalDate(): string {
         return this.proposalDate;
     }

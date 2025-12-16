@@ -10,6 +10,14 @@ export class Contract extends Document {
         this.version = metadata["version"];
     }
 
+    public getMetadata(): Record<string, string> {
+        let metadata: Record<string,string> = {};
+
+        metadata["author"] = this.author;
+        metadata["version"] = this.version;
+        return metadata;
+    }
+
     public getAuthor(): string {
         return this.author;
     }

@@ -12,15 +12,15 @@ export class ContractValidator extends DocumentValidator {
         return extension == this.CONTRACT_PDF_EXTENSION;
     }
 
-    public validateMetadata(author?: string, version?: string): boolean {
-        if (author == undefined) {
+    public validateMetadata(metadata: Record<string, string>): boolean {
+        if (metadata["author"] == undefined) {
             return false;
         }
 
-        if (version == undefined) {
+        if (metadata["version"] == undefined) {
             return false;
         }
 
-        return author.length > this.DOCUMENT_MIN_NAME_LENGTH && version.length > this.DOCUMENT_MIN_NAME_LENGTH;
+        return metadata["author"].length > this.DOCUMENT_MIN_NAME_LENGTH && metadata["version"].length > this.DOCUMENT_MIN_NAME_LENGTH;
     }
 }

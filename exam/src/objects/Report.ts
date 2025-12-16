@@ -10,6 +10,14 @@ export class Report extends Document {
         this.department = metadata["department"];
     }
 
+    public getMetadata(): Record<string, string> {
+        let metadata: Record<string,string> = {};
+
+        metadata["fiscalYear"] = this.fiscalYear.toString();
+        metadata["department"] = this.department;
+        return metadata;
+    }
+
     public getFiscalYear(): number {
         return this.fiscalYear;
     }

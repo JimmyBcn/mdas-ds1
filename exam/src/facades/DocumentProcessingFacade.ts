@@ -1,7 +1,6 @@
 import { DocumentFactory } from "../factories/DocumentFactory";
 import { ProcessorFactory } from "../factories/ProcessorFactory";
 import { ValidatorFactory } from "../factories/ValidatorFactory";
-import { IDocumentProcessor } from "../strategies/processing/IDocumentProcessor";
 import { ProcessResult } from "../strategies/processing/ProcessResult";
 
 export class DocumentProcessingFacade {
@@ -12,7 +11,10 @@ export class DocumentProcessingFacade {
     const validator = ValidatorFactory.createDocumentValidator(documentType);
     
     // 2. Validar documento
-    validator.
+    if (validator.validate(document)) {
+      throw new Error(`Document data is invalid for ${document.getFileName()}.`);
+    }
+    
     // 3. Procesar documento
     // 4. Retornar resultado del procesamiento
     return processor.process(document);

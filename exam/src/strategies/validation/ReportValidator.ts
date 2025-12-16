@@ -14,15 +14,16 @@ export class ReportValidator extends DocumentValidator {
         return extension == this.REPORT_EXCEL_SHORT_EXTENSION || extension == this.REPORT_EXCEL_LONG_EXTENSION;
     }
 
-    public validateMetadata(fiscalYear?: number, department?: string): boolean {
-        if (fiscalYear == undefined) {
+    public validateMetadata(metadata: Record<string, string>): boolean {
+        if (metadata["fiscalYear"] == undefined) {
             return false;
         }
 
-        if (department == undefined) {
+        if (metadata["department"] == undefined) {
             return false;
         }
 
-        return fiscalYear > this.REPORT_MIN_FISCAL_YEAR && department.length > this.DOCUMENT_MIN_NAME_LENGTH;
+        const fiscalYear = Number.parseInt(metadata["fiscalYear"]);
+        return fiscalYear > this.REPORT_MIN_FISCAL_YEAR && metadata["department"].length > this.DOCUMENT_MIN_NAME_LENGTH;
     }
 }
