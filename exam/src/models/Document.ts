@@ -1,26 +1,19 @@
-interface IDocument {
+interface IBaseDocument {
     fileName: string;
-    documentType: string;
     metadata: Record<string, string>;
-    allowedExtensions: string[];
-    maxSizeInBytes: number;
-    requiredMetadata: string[];
-    valid: boolean;
 }
 
-abstract class Document {
+export abstract class Document {
     public fileName: string;
-    public documentType: string;
     public metadata: Record<string, string>;
-    protected allowedExtensions: string[];
-    protected maxSizeInBytes: number;
+    protected allowedExtensions: string[] = [];
+    protected maxSizeInBytes: number = 0;
     protected requiredMetadata: string[] = [];
     private valid: boolean = false;
 
-    constructor(fileName: string, documentType: string, metadata: Record<string, string>) {
-    this.fileName = fileName;
-    this.documentType = documentType;
-    this.metadata = metadata;
+    constructor(baseDocument: IBaseDocument) {
+    this.fileName = baseDocument.fileName;
+    this.metadata = baseDocument.metadata;
     // size is always required for validation
     this.requiredMetadata.push('size');
     }
@@ -35,7 +28,9 @@ abstract class Document {
     }
 
     private hasRequiredMetadata(): boolean {
-        return this.requiredMetadata.every(field => this.metadata[field] && this.metadata[field].length > 0);
+        return this.requiredMetadata.every((field) => {
+            return this.metadata[field] && this.metadata[field].length > 0
+        });
     }
 
     private isWithinMaxSize(): boolean {
@@ -61,9 +56,9 @@ abstract class Document {
 
 export class Contract extends Document {
 
-    constructor(fileName: string, documentType: string, metadata: Record<string, string>) {
-        super(fileName, documentType, metadata);
-        this.allowedExtensions = [".pdf"];
+    constructor(baseDocument: IBaseDocument) {
+        super(baseDocument);
+        this.allowedExtensions = ["pdf"];
         this.maxSizeInBytes = 3 * 1024 * 1024;
         this.requiredMetadata.push("author", "version");
     }
@@ -83,9 +78,9 @@ export class Contract extends Document {
 
 export class FinancialReport extends Document {
     
-    constructor(fileName: string, documentType: string, metadata: Record<string, string>) {
-        super(fileName, documentType, metadata);
-        this.allowedExtensions = [".xlsx", ".xls"];
+    constructor(baseDocument: IBaseDocument) {
+        super(baseDocument);
+        this.allowedExtensions = ["xlsx", "xls"];
         this.maxSizeInBytes = 4 * 1024 * 1024;
         this.requiredMetadata.push("fiscalYear", "department");
     }
@@ -104,9 +99,9 @@ export class FinancialReport extends Document {
 }
 
 export class Proposal extends Document {
-    constructor(fileName: string, documentType: string, metadata: Record<string, string>) {
-        super(fileName, documentType, metadata);
-        this.allowedExtensions = [".pdf", ".docx"];
+    constructor(baseDocument: IBaseDocument) {
+        super(baseDocument);
+        this.allowedExtensions = ["pdf", "docx"];
         this.maxSizeInBytes = 5 * 1024 * 1024;
         this.requiredMetadata.push("proposalDate", "client");
     }
@@ -121,5 +116,19 @@ export class Proposal extends Document {
             throw new Error("Document is not valid");
         }
         console.warn(`Proposal ${this.fileName} processed !!!!`);
+    }
+}
+export class DocumentFactory {
+    public static create(type: string, baseDocument: IBaseDocument): Document {
+        switch (type) {
+            case "Contract":
+                return new Contract(baseDocument);
+            case "FinancialReport":
+                return new FinancialReport(baseDocument);
+            case "Proposal":
+                return new Proposal(baseDocument);
+            default:
+                throw new Error(`Document type ${type} not supported`);
+        }
     }
 }
