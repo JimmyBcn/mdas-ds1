@@ -1,4 +1,4 @@
-class Document {
+abstract class Document {
     name: string;
     extension: string;
     size: number;
@@ -8,6 +8,8 @@ class Document {
         this.extension = extension;
         this.size = size;
     }
+
+    abstract validate(): boolean;
 }
 
 export { Document };
