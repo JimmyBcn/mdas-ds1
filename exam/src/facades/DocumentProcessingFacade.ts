@@ -1,4 +1,5 @@
 import { DocumentFactory } from "../factories/DocumentFactory";
+import { DocumentProcessorFactory } from "../factories/DocumentProcessorFactory";
 
 
 export class DocumentProcessingFacade {
@@ -8,7 +9,8 @@ export class DocumentProcessingFacade {
     // 2. Validar documento
     document.validate();
     // 3. Procesar documento
-
+    const processResult = DocumentProcessorFactory.getProcessor(documentType).process(document);
     // 4. Retornar resultado del procesamiento
+    return processResult;
   }
 }
