@@ -4,10 +4,10 @@ export class Proposal extends Document {
     private proposalDate: string = "";
     private client: string = "";
 
-    constructor (filename: string, extension: string, size: number, proposalDate: string, client: string) {
-        super(filename, extension, size);
-        this.proposalDate = proposalDate;
-        this.client = client;
+    constructor (filename: string, metadata: Record <string, string>) {
+        super(filename, metadata);
+        this.proposalDate = metadata["proposalDate"];
+        this.client = metadata["client"];
     }
 
     public getProposalDate(): string {

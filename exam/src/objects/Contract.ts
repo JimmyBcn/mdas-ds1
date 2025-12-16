@@ -4,10 +4,10 @@ export class Contract extends Document {
     private author: string = "";
     private version: string = "";
 
-    constructor (filename: string, extension: string, size: number, author: string, version: string) {
-        super(filename, extension, size);
-        this.author = author;
-        this.version = version;
+    constructor (filename: string, metadata: Record <string, string>) {
+        super(filename, metadata);
+        this.author = metadata["author"];
+        this.version = metadata["version"];
     }
 
     public getAuthor(): string {

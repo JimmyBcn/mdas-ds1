@@ -1,5 +1,6 @@
+import { Document } from "../../objects/Document";
+import { ProcessResult } from "./ProcessResult";
+
 export interface IDocumentProcessor {
-    // register processing
-    // process document (print or return boolean)
-    // return result
+    process(document: Document): ProcessResult;
 }

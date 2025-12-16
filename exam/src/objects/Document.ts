@@ -3,10 +3,10 @@ export abstract class Document {
     protected extension: string = "";
     protected size: number = 0;
 
-    constructor (filename: string, extension: string, size: number) {
-        this.filename = filename;
-        this.extension = extension;
-        this.size = size;
+    constructor (filename: string, metadata: Record <string, string>) {
+        this.filename = filename.split('.')[0];
+        this.extension = filename.split('.')[1];
+        this.size = Number.parseInt(metadata["size"]);
     }
 
     public getFileName(): string {

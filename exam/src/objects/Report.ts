@@ -4,10 +4,10 @@ export class Report extends Document {
     private fiscalYear: number = 0;
     private department: string = "";
 
-    constructor (filename: string, extension: string, size: number, fiscalYear: number, department: string) {
-        super(filename, extension, size);
-        this.fiscalYear = fiscalYear;
-        this.department = department;
+    constructor (filename: string, metadata: Record <string, string>) {
+        super(filename, metadata);
+        this.fiscalYear = Number.parseInt(metadata["fiscalYear"]);
+        this.department = metadata["department"];
     }
 
     public getFiscalYear(): number {
