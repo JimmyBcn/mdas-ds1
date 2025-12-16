@@ -1,4 +1,4 @@
-import { DocumentProcessingFacade } from "./facades/DocumentProcessingFacade";
+import { DocumentProcessingFacade } from "./facades/document-processing-facade";
 
 function main(): void {
   const facade = new DocumentProcessingFacade();
@@ -7,7 +7,7 @@ function main(): void {
     author: "Juan Pérez",
     version: "2.1.0",
   });
-  console.log(contractResult.getReport());
+  console.log( contractResult.getReport() );
 }
 
 main();
