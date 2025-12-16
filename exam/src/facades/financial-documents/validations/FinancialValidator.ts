@@ -5,6 +5,8 @@ import { ValidatedResult } from "../../../models/ValidatedResult";
 export class FinancialReportValidator extends DocumentValidator {
   // Specific financial report validation
   validate(document: Document): ValidatedResult {
+    this.errors = [];
+
     const MAX_SIZE_MB = 4;
     const ALLOWED_EXTENSIONS = [".xls", ".xlsx"];
     const REQUIRED_METADATA_FIELDS = ["fiscalYear", "department"];

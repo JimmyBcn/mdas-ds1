@@ -5,6 +5,8 @@ import { DocumentValidator } from "../../../validations/DocumentValidator";
 export class CommercialValidator extends DocumentValidator {
   // Specific commercial document validation
   validate(document: Document): ValidatedResult {
+    this.errors = [];
+
     const MAX_SIZE_MB = 5; // Commercial Documents: Max 5 MB
     const ALLOWED_EXTENSIONS = [".docx", ".pdf"];
     const REQUIRED_METADATA_FIELDS = ["client", "proposalDate"];
