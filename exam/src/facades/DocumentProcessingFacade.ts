@@ -14,14 +14,16 @@ export class DocumentProcessingFacade {
       // 3. Procesar documento
       if (!validationResult.getIsValid()) {
         throw new Error(`Document validation failed`);
-      } else {
-        const processor: IDocumentProcessor = ProcessorFactory.createProcessor(documentType);
-        const processResult = processor.processDocument(document);
       }
+
+      const processor: IDocumentProcessor = ProcessorFactory.createProcessor(documentType);
+      const processResult = processor.processDocument(document);
+
       // 4. Retornar resultado del procesamiento
-      
+      return processResult;
+
     } catch (error) {
-      throw new Error(`Error al procesar documento`);
+      throw new Error(`Error processing the document`);
     }
   }
 }
