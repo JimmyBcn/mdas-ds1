@@ -26,7 +26,7 @@ export class OrderProcessor {
     private readonly taxCalculator: ITaxCalculator,
     private readonly discountCalculator: IDiscountCalculator,
     private readonly shippingCalculator: IShippingCalculator
-  ) {}
+  ) { }
 
   processOrders(orders: Order[]): OrderResult[] {
     this.resetTotals();

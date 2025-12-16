@@ -6,7 +6,11 @@ function main(): void {
   const contractResult = facade.processDocument("contrato_servicios_2024.pdf", "Contract", {
     author: "Juan Pérez",
     version: "2.1.0",
+    size: "10MB",
+    extension: "pdf",
   });
+
+
   console.log(contractResult.getReport());
 }
 
