@@ -11,7 +11,7 @@ export class DocumentFactory {
         switch (type) {
             case "Contract":
                 return new Contract(fileName, size, metadata);
-            case "FinancialReport":
+            case "Report":
                 return new Report(fileName, size, metadata);
             case "Proposal":
                 return new Proposal(fileName, size, metadata);
