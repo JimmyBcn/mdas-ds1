@@ -1,13 +1,15 @@
 function getDocumentExtension( filename: string ): string {
+
     const parts = filename.split( '.' );
     return parts.length > 1 ? parts.pop()!.toLowerCase() : '';
 }
+
 export abstract class GeneralDocument {
 
     public readonly fileExtension: string;
 
     constructor(
-        protected filename: string,
+        public readonly filename: string,
         public readonly fileSize: number,
         public readonly documentType: string,
         public readonly metadata: Record<string, any> = {}
@@ -16,6 +18,7 @@ export abstract class GeneralDocument {
         {
             throw new Error( 'Filename cannot be empty.');
         }
+
         this.fileExtension = getDocumentExtension( filename );
     } 
 }
