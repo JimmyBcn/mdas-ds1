@@ -6,16 +6,25 @@ export class Document {
   ) {}
 
   validateSize(maxFileSize: number){
-    return this.fileSize != null && this.fileSize < maxFileSize
+    let res = this.fileSize != null && this.fileSize < maxFileSize
+    if(!res){
+        console.log("File max sized reached (" + maxFileSize + "MB)")
+    }
+    return res;
   }
 
-  validateName(){
-    return this.name != null && this.name != "" && this.name.indexOf(".")
+  validateName() {
+    let result = this.name != null && this.name != "" && this.name.indexOf(".") != -1
+    if(!result){
+        console.log("File name Invalid")
+    }
+    return result;
   }
 
   validateExtension(extension: Extension){
     let extensionIndex: number = this.name.indexOf(".")
-    return this.name.endsWith(extension, extensionIndex)
+    let result = this.name.endsWith(extension, extensionIndex)
+    return result;
   }
 
 }
