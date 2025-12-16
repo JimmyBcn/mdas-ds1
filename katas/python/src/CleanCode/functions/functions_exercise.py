@@ -1,0 +1,19 @@
+# 🔧 EJERCICIO: Clean Code - Functions (Funciones)
+#
+# Instrucciones:
+# 1. Analiza el archivo functions_bad.py e identifica los problemas con la función `process_user_score`.
+# 2. Refactoriza el código dividiendo `process_user_score` en funciones más pequeñas y con una sola responsabilidad.
+# 3. Implementa tu solución en este archivo.
+#
+# Pistas:
+# - ¿Qué responsabilidades puedes extraer de `process_user_score`? (ej: calcular bonus, notificar, etc.)
+# - ¿Cómo puedes hacer que la función principal solo orqueste a las demás?
+# - ¿Hay efectos secundarios que puedas aislar?
+#
+# Cuando termines, compara tu solución con `functions_good.py`.
+
+# Escribe tu solución aquí:
+
+
+if __name__ == "__main__":
+    pass

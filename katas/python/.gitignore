@@ -1,0 +1,33 @@
+# Python virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# Pytest cache
+.pytest_cache/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Test coverage
+.coverage
+htmlcov/
+*.cover
+.hypothesis/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db

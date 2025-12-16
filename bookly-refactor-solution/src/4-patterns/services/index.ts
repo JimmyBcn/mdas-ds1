@@ -1,0 +1,12 @@
+export { TaxCalculator } from './taxes/TaxCalculator';
+export { DiscountCalculator } from './discounts/DiscountCalculator';
+export { ShippingCalculator } from './shipping/ShippingCalculator';
+export { OrderProcessor } from './OrderProcessor';
+export { StandardShipping } from './shipping/StandardShipping';
+export { ExpressShipping } from './shipping/ExpressShipping';
+export { EconomyShipping } from './shipping/EconomyShipping';
+export { ShippingFactory } from './shipping/ShippingFactory';
+export { PremiumDiscountStrategy } from './discounts/PremiumDiscountStrategy';
+export { RegularDiscountStrategy } from './discounts/RegularDiscountStrategy';
+export { DiscountFactory } from './discounts/DiscountFactory';
+export { OrderProcessingFacade } from './OrderProcessingFacade';

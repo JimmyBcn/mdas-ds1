@@ -1,0 +1,61 @@
+# OOP: Polimorfismo - Ejemplo
+
+## 🎯 Objetivos de aprendizaje
+
+- Entender qué es el polimorfismo en OOP
+- Eliminar condicionales usando comportamiento polimórfico
+- Usar clases abstractas y métodos abstractos (ABC)
+- Aplicar el principio Open/Closed con polimorfismo
+
+## 📋 El problema: Lógica condicional repetida
+
+**Concepto:** _El polimorfismo permite que objetos de diferentes clases respondan al mismo mensaje de forma específica_
+
+### ¿Qué está mal aquí? 🚫
+
+```python
+class AnimalProcessor:
+    def make_sound(self, animal):
+        if animal["type"] == "dog":
+            print("Guau!")
+        elif animal["type"] == "cat":
+            print("Miau!")
+        elif animal["type"] == "bird":
+            print("Pío!")
+        # ❌ Si agrego un pez, debo modificar ESTE método
+
+    def feed(self, animal):
+        if animal["type"] == "dog":
+            # ...
+        elif animal["type"] == "cat":
+            # ...
+        # ❌ Más if/else repetidos
+```
+
+**Problemas:**
+
+- **Condicionales repetidas**: if/else en muchos lugares
+- **Difícil de extender**: Agregar tipo requiere modificar múltiples métodos
+- **Viola OCP**: Código existente debe cambiar para nuevas funcionalidades
+- **Propenso a errores**: Fácil olvidar actualizar un caso
+
+## 🔧 Tu tarea
+
+1. **Estudia** `polymorphism_bad.py` - identifica múltiples if/else
+2. **Implementa** tu solución en `polymorphism_exercise.py` antes de ver la propuesta
+3. **Observa** `polymorphism_good.py` y compara con tu solución
+
+## 🎯 Puntos clave
+
+- Elimina if/else verificando tipos
+- Clase abstracta (ABC) con métodos abstractos
+- Cada hijo implementa su comportamiento
+- Fácil agregar nuevos tipos sin modificar
+
+## ⏱️ Verificación rápida
+
+Pregúntate:
+
+- ¿Tengo if/else verificando tipos?
+- ¿Cada clase puede saber su comportamiento?
+- ¿Puedo usar clase abstracta (ABC)?
