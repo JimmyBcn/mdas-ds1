@@ -3,6 +3,12 @@ export abstract class Document {
     protected extension: string = "";
     protected size: number = 0;
 
+    constructor (filename: string, extension: string, size: number) {
+        this.filename = filename;
+        this.extension = extension;
+        this.size = size;
+    }
+
     public getFileName(): string {
         return this.filename;
     }

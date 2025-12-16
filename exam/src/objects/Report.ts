@@ -1,6 +1,28 @@
+import { Document } from "./Document";
+
 export class Report extends Document {
     private fiscalYear: number = 0;
     private department: string = "";
 
-    // methods
+    constructor (filename: string, extension: string, size: number, fiscalYear: number, department: string) {
+        super(filename, extension, size);
+        this.fiscalYear = fiscalYear;
+        this.department = department;
+    }
+
+    public getFiscalYear(): number {
+        return this.fiscalYear;
+    }
+
+    public getDepartment(): string {
+        return this.department;
+    }
+
+    public setFiscalYear(fiscalYear: number): void {
+        this.fiscalYear = fiscalYear;
+    }
+
+    public setDepartment(department: string): void {
+        this.department = department;
+    }
 }
