@@ -1,6 +1,7 @@
 import { Document } from './document';
 
-const LEGAL_CONTRACT_EXTENSIONS = ['pdf'];
+const LEGAL_CONTRACT_ALLOWED_EXTENSIONS = ['pdf'];
+const MAX_LEGAL_CONTRACT_SIZE = 3 * 1024 * 1024; // 3 MB
 
 class LegalContract extends Document {
     author: string;
@@ -13,4 +14,4 @@ class LegalContract extends Document {
     }
 }
 
-export { LegalContract, LEGAL_CONTRACT_EXTENSIONS };
+export { LegalContract, LEGAL_CONTRACT_ALLOWED_EXTENSIONS, MAX_LEGAL_CONTRACT_SIZE };
