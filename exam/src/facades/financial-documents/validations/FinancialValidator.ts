@@ -8,6 +8,11 @@ export class FinancialReportValidator extends DocumentValidator {
     const ALLOWED_EXTENSIONS = [".xls", ".xlsx"];
     const REQUIRED_METADATA_FIELDS = ["fiscalYear", "department"];
 
+    console.log(
+      "Validation started for financial report document:",
+      document.fileName
+    );
+
     // Validate file name
     if (!this.validateFileName(document)) {
       return false;

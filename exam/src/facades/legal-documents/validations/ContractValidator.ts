@@ -4,9 +4,11 @@ import { Document } from "../../../models/Document";
 export class ContractValidator extends DocumentValidator {
   // Specific contract validation
   validate(document: Document): boolean {
-    const MAX_SIZE_MB = 3;  // Contracts: Max 3 MB per README
+    const MAX_SIZE_MB = 3; // Contracts: Max 3 MB per README
     const ALLOWED_EXTENSIONS = [".pdf"];
     const REQUIRED_METADATA_FIELDS = ["author", "version"];
+
+    console.log("Validation started for contract document:", document.fileName);
 
     // Validate file name
     if (!this.validateFileName(document)) {
