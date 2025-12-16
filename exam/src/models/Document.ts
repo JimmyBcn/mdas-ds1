@@ -15,7 +15,7 @@ export abstract class Document {
     if (parts.length < 2) {
       return "";
     }
-    return "." + parts[parts.length - 1].toLowerCase();
+    return parts[parts.length - 1].toLowerCase();
   }
 
   public getFileName(): string {
