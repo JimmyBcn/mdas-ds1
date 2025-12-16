@@ -1,12 +1,15 @@
 import { FileValidator } from "../services/FileValidator";
 
 export class DocumentProcessingFacade {
+
+  private fileValidator: FileValidator;
+  private fileProcessor: FileProcessor;
+
   processDocument(fileName: string, documentType: string, metadata?: Record<string, string>) {
 
     //factory para crear el documento
 
     // 1. Crear documento
-
     const file = FileFactory.createFile(fileName, documentType, metadata);
 
     // 2. Validar documento

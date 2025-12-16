@@ -1,5 +1,5 @@
+import { GenericFile } from "../models/GenericFile";
+
 export interface IFileValidator {
-    validateFileSize(file: File): boolean;
-    validateFileExtension(file: File): boolean;
-    validateFileNameIsNotEmpty(file: File): boolean;
+    validate(size: number, fileExtension: string, fileName: string, metadata: Record<string, string>): boolean;
 }
