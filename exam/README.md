@@ -10,9 +10,7 @@
 
 ## 📤 Instrucciones de entrega
 
-- Crea una rama remota con tu nombre y apellido: `git checkout -b "john-doe"`
-- Crea cuantos commits creas necesarios para tu solución
-- **Sube todo tu código a la rama remota: `git push --set-upstream origin john-doe`** (fíjate que usa el nombre de la rama)
+- Sigue las instrucciones en ENTREGA.md
 
 Alternativamente:
 
