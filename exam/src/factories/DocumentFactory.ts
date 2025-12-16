@@ -5,6 +5,7 @@ import { FinancialReport } from "../models/FinancialReport";
 import { CommercialProposal } from "../models/CommercialProposal";
 
 export class DocumentFactory {
+  // Factory method to create documents based on document type
   createDocument(fileName: string, fileSize: number, type: DocumentType, metadata: Record<string, any>): Document {
     switch (type) {
       case DocumentType.Contract:

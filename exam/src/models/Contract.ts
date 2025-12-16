@@ -27,7 +27,8 @@ export class Contract extends Document {
   protected getAllowedExtensions(): string[] {
     return ["pdf"];
   }
-
+  
+  // validate checks the basic document information and checks for required metadata specific to Contract
   public validate(): string[] {
     const errors = super.validate();
 

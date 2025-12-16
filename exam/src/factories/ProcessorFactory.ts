@@ -5,6 +5,7 @@ import { FinancialReportProcessor } from "../processors/FinancialReportProcessor
 import { CommercialProposalProcessor } from "../processors/CommercialProposalProcessor";
 
 export class ProcessorFactory {
+  // Factory method to create document processors based on document type
   createProcessor(type: DocumentType): IDocumentProcessor {
     switch (type) {
       case DocumentType.Contract:

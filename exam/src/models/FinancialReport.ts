@@ -28,6 +28,7 @@ export class FinancialReport extends Document {
     return ["xlsx", "xls"];
   }
 
+  // validate checks the basic document information and checks for required metadata specific to FinancialReport
   public validate(): string[] {
     const errors = super.validate();
 

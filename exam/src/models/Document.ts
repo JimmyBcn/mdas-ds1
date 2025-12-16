@@ -1,3 +1,4 @@
+// Base abstract class for different types of documents
 export abstract class Document {
   protected fileName: string;
   protected fileSize: number;

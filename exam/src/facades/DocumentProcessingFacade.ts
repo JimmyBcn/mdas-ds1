@@ -11,7 +11,7 @@ export class DocumentProcessingFacade {
     this.documentFactory = new DocumentFactory();
     this.processorFactory = new ProcessorFactory();
   }
-
+  // processDocument processes a document based on its type and metadata
   processDocument(fileName: string, documentType: DocumentType, metadata: Record<string, any>, fileSize: number): ProcessResult {
     try {
       // 1. Create document with factory

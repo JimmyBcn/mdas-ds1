@@ -28,6 +28,7 @@ export class CommercialProposal extends Document {
     return ["pdf", "docx"];
   }
 
+  // validate checks the basic document information and checks for required metadata specific to CommercialProposal
   public validate(): string[] {
     const errors = super.validate();
 

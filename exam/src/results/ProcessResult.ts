@@ -1,3 +1,4 @@
+  // ProcessResult represents the output of processing a document
 export class ProcessResult {
   private success: boolean;
   private extractedData: Record<string, any>;
@@ -21,6 +22,7 @@ export class ProcessResult {
     return this.messages;
   }
 
+  // getReport generates a formatted report of the processing result
   public getReport(): string {
     const lines: string[] = [];
 

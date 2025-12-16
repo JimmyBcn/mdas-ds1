@@ -3,6 +3,7 @@ import { ProcessResult } from "../results/ProcessResult";
 import { IDocumentProcessor } from "./IDocumentProcessor";
 
 export class CommercialProposalProcessor implements IDocumentProcessor {
+  // process extracts relevant information from a CommercialProposal document
   process(document: CommercialProposal): ProcessResult {
     const messages: string[] = [];
     const extractedData: Record<string, any> = {};
