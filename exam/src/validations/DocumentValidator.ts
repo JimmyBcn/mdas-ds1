@@ -1,7 +1,7 @@
 import { Document } from "../models/Document";
 
 export abstract class DocumentValidator {
-  // Common validation: file size
+  // File size validation
   protected validateSize(document: Document, maxSizeMB: number): boolean {
     if (document.size > maxSizeMB) {
       console.log(
@@ -15,7 +15,7 @@ export abstract class DocumentValidator {
     return true;
   }
 
-  // Common validation: file extension
+  // File extension validation
   protected validateExtension(
     document: Document,
     allowedExtensions: string[]
@@ -37,7 +37,7 @@ export abstract class DocumentValidator {
     return true;
   }
 
-  // Common validation: file name not empty
+  // File name validation
   protected validateFileName(document: Document): boolean {
     if (document.fileName === null || document.fileName.trim().length === 0) {
       console.log("File name is empty or null.");
@@ -46,7 +46,7 @@ export abstract class DocumentValidator {
     return true;
   }
 
-  // Common validation: required metadata fields
+  // Metadata validation
   protected validateMetadata(
     document: Document,
     requiredFields: string[]
@@ -64,6 +64,5 @@ export abstract class DocumentValidator {
     return true;
   }
 
-  // Abstract method - each document type implements its own specific validation
   abstract validate(document: Document): boolean;
 }

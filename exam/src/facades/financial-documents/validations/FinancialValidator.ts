@@ -1,12 +1,12 @@
-import { DocumentValidator } from "../../../validations/DocumentValidator";
 import { Document } from "../../../models/Document";
+import { DocumentValidator } from "../../../validations/DocumentValidator";
 
-export class ContractValidator extends DocumentValidator {
-  // Specific contract validation
+export class FinancialReportValidator extends DocumentValidator {
+  // Specific financial report validation
   validate(document: Document): boolean {
-    const MAX_SIZE_MB = 3;  // Contracts: Max 3 MB per README
-    const ALLOWED_EXTENSIONS = [".pdf"];
-    const REQUIRED_METADATA_FIELDS = ["author", "version"];
+    const MAX_SIZE_MB = 4;
+    const ALLOWED_EXTENSIONS = [".xls", ".xlsx"];
+    const REQUIRED_METADATA_FIELDS = ["fiscalYear", "department"];
 
     // Validate file name
     if (!this.validateFileName(document)) {
@@ -28,7 +28,7 @@ export class ContractValidator extends DocumentValidator {
       return false;
     }
 
-    console.log("Contract document is valid.");
+    console.log("Financial report document is valid.");
     return true;
   }
 }
