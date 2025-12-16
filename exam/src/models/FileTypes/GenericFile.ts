@@ -11,7 +11,7 @@ export class GenericFile {
         this.documentType = documentType;
         this.size = size;
         this.extension = extension;
-        this.metadata = metadata;
+        this.metadata = metadata || {};
     }
 
     getFileName(): string {

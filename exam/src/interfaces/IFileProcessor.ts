@@ -1,3 +1,7 @@
+import { GenericFile } from "../models/FileTypes/GenericFile";
+import { ProcessedResult } from "../models/ProcessedResult";
+
+
 export interface IFileProcessor {
-    processFile(file: File): boolean;
+    processFile(file: GenericFile): ProcessedResult;
 }
