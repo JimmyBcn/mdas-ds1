@@ -1,8 +1,21 @@
+import { DocumentFactory } from "../factorys/DocumentFactory";
+import { Document } from "../models";
+
 export class DocumentProcessingFacade {
-  processDocument(fileName: string, documentType: string, metadata?: Record<string, string>) {
+  processDocument(fileName: string, documentType: string, metadata: Record<string, string>): Document {
     // 1. Crear documento
     // 2. Validar documento
     // 3. Procesar documento
     // 4. Retornar resultado del procesamiento
+    const document = DocumentFactory.create(documentType, { fileName, metadata });
+    try {
+      document.validate();
+      document.process();
+    } catch (error:any) {
+      console.log(`Error processing document ${fileName}: ${error.message}`);
+    }
+    finally {
+      return document;
+    }
   }
 }

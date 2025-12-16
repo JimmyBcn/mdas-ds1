@@ -1,0 +1,3 @@
+node_modules/*
+exam/node_modules/*
+exam/package-lock.json
