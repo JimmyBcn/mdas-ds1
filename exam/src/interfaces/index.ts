@@ -1,0 +1,1 @@
+export { IDocumentProcessor } from './IDocumentProcessor';
