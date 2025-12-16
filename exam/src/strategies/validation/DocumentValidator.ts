@@ -1,6 +1,16 @@
 export abstract class DocumentValidator {
-    // validate size
-    // validate extension
-    // validate filename --> not empty
-    // validate metadata --> abstract
+    protected readonly DOCUMENT_MIN_SIZE = 0;
+    protected readonly DOCUMENT_MIN_NAME_LENGTH = 0;
+
+    public validateSize(size: number): boolean {
+        return size > this.DOCUMENT_MIN_SIZE;
+    }
+
+    public validateExtension(extension: string): boolean {
+        return extension.length > this.DOCUMENT_MIN_NAME_LENGTH && extension.charAt(0) == '.';
+    }
+
+    public validateFileName(filename: string): boolean {
+        return filename.length > this.DOCUMENT_MIN_NAME_LENGTH;
+    }
 }
