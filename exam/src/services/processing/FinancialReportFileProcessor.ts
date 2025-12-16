@@ -9,7 +9,7 @@ export class FinancialReportFileProcessor implements IFileProcessor {
         const extractedData: Record<string, any> = {};
 
         messages.push("Financial Report processed successfully");
-        extractedData["documentType"] = "Reporte Financiero";
+        extractedData["documentType"] = "FINANCIAL_REPORT";
         extractedData["fileName"] = file.getFileName();
 
         return new ProcessedResult(true, extractedData, messages);

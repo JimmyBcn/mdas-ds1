@@ -9,7 +9,7 @@ export class CommercialProposalFileProcessor implements IFileProcessor {
         const extractedData: Record<string, any> = {};
 
         messages.push("Commercial Proposal processed successfully");
-        extractedData["documentType"] = "Contrato Legal";
+        extractedData["documentType"] = "COMERCIAL_PROPOSAL";
         extractedData["fileName"] = file.getFileName();
 
         return new ProcessedResult(true, extractedData, messages);

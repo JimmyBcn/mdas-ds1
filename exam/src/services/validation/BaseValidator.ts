@@ -3,12 +3,15 @@ import { IFileValidator } from "../../interfaces/IFileValidator";
 import { ValidationRules } from "./ValidationRules";
 
 export class BaseFileValidator implements IFileValidator {
-    private rules: ValidationRules;
 
-    constructor() {
-    }
+    private rules!: ValidationRules;
+
+    constructor() { }
 
     validate(file: GenericFile): boolean {
+        if (!this.rules) {
+            throw new Error("Validation rules not set");
+        }
         return this.validateFileSize(file.getSize()) &&
             this.validateFileExtension(file.getExtension()) &&
             this.validateFileNameIsNotEmpty(file.getFileName()) &&

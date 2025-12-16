@@ -2,7 +2,6 @@ import { IFileProcessor } from "../../interfaces/IFileProcessor";
 import { CommercialProposalFileProcessor } from "./CommercialProposalFileProcessor";
 import { FinancialReportFileProcessor } from "./FinancialReportFileProcessor";
 import { LegalContractFileProcessor } from "./LegalContractFileProcessor";
-import { ProcessedResult } from "../../models/ProcessedResult";
 
 export class FileProcessorFactory {
     private static readonly FILE_TYPE_LEGAL_CONTRACT = 'LEGAL_CONTRACT';
