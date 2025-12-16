@@ -7,19 +7,17 @@ export class ValidatedResult {
     public readonly errors: string[] = []
   ) {}
 
-  hasErrors(): boolean {
-    return !this.isValid || this.errors.length > 0;
-  }
-
+  // Combines all error messages into one string
   getErrorMessage(): string {
     return this.errors.join("; ");
   }
 
+  // Generates a readable report
   getReport(): string {
     if (this.isValid) {
-      return `Validation passed for '${this.document.fileName}'`;
+      return `✓ Validation passed for '${this.document.fileName}'`;
     }
-    return `Validation failed for '${
+    return `✗ Validation failed for '${
       this.document.fileName
     }': ${this.getErrorMessage()}`;
   }
