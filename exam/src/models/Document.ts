@@ -1,4 +1,4 @@
-interface IBaseDocument {
+export interface IBaseDocument {
     fileName: string;
     metadata: Record<string, string>;
 }
@@ -52,83 +52,4 @@ export abstract class Document {
 
     abstract process(): void;
     abstract generateReport(): string;
-}
-
-export class Contract extends Document {
-
-    constructor(baseDocument: IBaseDocument) {
-        super(baseDocument);
-        this.allowedExtensions = ["pdf"];
-        this.maxSizeInBytes = 3 * 1024 * 1024;
-        this.requiredMetadata.push("author", "version");
-    }
-
-    generateReport(): string {
-        return `Contract ${this.fileName} Report !!!!`;
-    }
-
-    process(): void {
-        if (!this.isValid()) {
-            console.warn(`Contract ${this.fileName} can not be processed !!!!`);
-            throw new Error("Document is not valid");
-        }
-        console.warn(`Contract ${this.fileName} processed !!!!`);
-    }
-}
-
-export class FinancialReport extends Document {
-    
-    constructor(baseDocument: IBaseDocument) {
-        super(baseDocument);
-        this.allowedExtensions = ["xlsx", "xls"];
-        this.maxSizeInBytes = 4 * 1024 * 1024;
-        this.requiredMetadata.push("fiscalYear", "department");
-    }
-
-    generateReport(): string {
-        return `Financial Report ${this.fileName} Report !!!!`;
-    }
-
-    process(): void {
-        if (!this.isValid()) {
-            console.warn(`Financial Report ${this.fileName} can not be processed !!!!`);
-            throw new Error("Document is not valid");
-        }
-        console.warn(`Financial Report ${this.fileName} processed !!!!`);
-    }
-}
-
-export class Proposal extends Document {
-    constructor(baseDocument: IBaseDocument) {
-        super(baseDocument);
-        this.allowedExtensions = ["pdf", "docx"];
-        this.maxSizeInBytes = 5 * 1024 * 1024;
-        this.requiredMetadata.push("proposalDate", "client");
-    }
-
-    generateReport(): string {
-        return `Proposal ${this.fileName} Report !!!!`;
-    }
-
-    process(): void {
-        if (!this.isValid()) {
-            console.warn(`Proposal ${this.fileName} can not be processed !!!!`);
-            throw new Error("Document is not valid");
-        }
-        console.warn(`Proposal ${this.fileName} processed !!!!`);
-    }
-}
-export class DocumentFactory {
-    public static create(type: string, baseDocument: IBaseDocument): Document {
-        switch (type) {
-            case "Contract":
-                return new Contract(baseDocument);
-            case "FinancialReport":
-                return new FinancialReport(baseDocument);
-            case "Proposal":
-                return new Proposal(baseDocument);
-            default:
-                throw new Error(`Document type ${type} not supported`);
-        }
-    }
 }
