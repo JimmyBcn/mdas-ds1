@@ -1,36 +1,34 @@
 import { DocumentValidator } from "../../../validations/DocumentValidator";
 import { Document } from "../../../models/Document";
+import { ValidatedResult } from "../../../models/ValidatedResult";
 
 export class ContractValidator extends DocumentValidator {
   // Specific contract validation
-  validate(document: Document): boolean {
-    const MAX_SIZE_MB = 3; // Contracts: Max 3 MB per README
+  validate(document: Document): ValidatedResult {
+    this.errors = [];
+
+    const MAX_SIZE_MB = 3;
     const ALLOWED_EXTENSIONS = [".pdf"];
     const REQUIRED_METADATA_FIELDS = ["author", "version"];
 
     console.log("Validation started for contract document:", document.fileName);
 
     // Validate file name
-    if (!this.validateFileName(document)) {
-      return false;
-    }
+    this.validateFileName(document);
 
     // Validate file size
-    if (!this.validateSize(document, MAX_SIZE_MB)) {
-      return false;
-    }
+    this.validateSize(document, MAX_SIZE_MB);
 
     // Validate file extension
-    if (!this.validateExtension(document, ALLOWED_EXTENSIONS)) {
-      return false;
-    }
+    this.validateExtension(document, ALLOWED_EXTENSIONS);
 
     // Validate required metadata fields
-    if (!this.validateMetadata(document, REQUIRED_METADATA_FIELDS)) {
-      return false;
+    this.validateMetadata(document, REQUIRED_METADATA_FIELDS);
+
+    if (this.errors.length > 0) {
+      return new ValidatedResult(false, document, this.errors);
     }
 
-    console.log("Contract document is valid.");
-    return true;
+    return new ValidatedResult(true, document);
   }
 }
