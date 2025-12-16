@@ -1,10 +1,10 @@
 import { DocumentValidator } from "./DocumentValidator";
 import { Document } from "../documents/Document";
 
-const MAX_CONTRACT_SIZE_MB = 5;
-const ALLOWED_CONTRACT_EXTENSIONS = ["pdf", "docx"];
+const MAX_REPORT_SIZE_MB = 5;
+const ALLOWED_REPORT_EXTENSIONS = ["pdf", "docx"];
 
-export class ContractValidator extends DocumentValidator {
+export class ReportValidator extends DocumentValidator {
     protected validateSpecific(document: Document): void {  
         this.validateSizeMB(document.getSizeMB());
 
@@ -14,13 +14,13 @@ export class ContractValidator extends DocumentValidator {
     }
 
     private validateSizeMB(sizeMB: number): void {
-        if (sizeMB > MAX_CONTRACT_SIZE_MB) {
+        if (sizeMB > MAX_REPORT_SIZE_MB) {
             throw new Error("Report: tamaño máximo 5MB");
         }
     }
 
     private validateExtension(extension: string): void {
-        if (!ALLOWED_CONTRACT_EXTENSIONS.includes(extension)) {
+        if (!ALLOWED_REPORT_EXTENSIONS.includes(extension)) {
             throw new Error("Report: solo se permiten archivos PDF y DOCX");
         }
     }
