@@ -17,3 +17,90 @@
 // Cuando termines, compara tu solución con abstraction-good.ts
 
 // Escribe tu solución aquí:
+
+class EmailSender {
+  private smtpServer: string = "smtp.gmail.com";
+  private smtpPort: number = 587;
+  private username: string = "cabeza e mondongo";
+  private password: string = "mondongo123";
+  private isConnected: boolean = false;
+  private connectionAttempts: number = 0;
+  private lastError: string = "";
+
+  private connectToServer(): boolean {
+    console.log(`Conectando a ${this.smtpServer}:${this.smtpPort}...`);
+    this.connectionAttempts++;
+
+    if (this.username && this.password) {
+      this.isConnected = true;
+      this.lastError = "";
+      return true;
+    } else {
+      this.lastError = "Credenciales inválidas";
+      this.isConnected = false;
+      return false;
+    }
+  }
+
+  private disconnectFromServer(): void {
+    console.log("Desconectando del servidor...");
+    this.isConnected = false;
+  }
+
+  private buildMessage({
+    to,
+    subject,
+    body,
+  }: {
+    to: string;
+    subject: string;
+    body: string;
+  }): string {
+    return `To: ${to}\nSubject: ${subject}\n\n${body}`;
+  }
+
+  private sendRawMessage(message: string): boolean {
+    if (!this.isConnected) {
+      this.lastError = "No conectado al servidor";
+      return false;
+    }
+    console.log(`Enviando mensaje:\n${message}`);
+    return true;
+  }
+
+  public sendEmail({
+    to,
+    subject,
+    body,
+  }: {
+    to: string;
+    subject: string;
+    body: string;
+  }): boolean {
+    let messageData = {
+      to: to,
+      subject: subject,
+      body: body,
+    };
+
+    if (!this.connectToServer()) {
+      console.log("Error de conexión:", this.lastError);
+      return false;
+    }
+    const message = this.buildMessage(messageData);
+    const sent = this.sendRawMessage(message);
+    this.disconnectFromServer();
+    return sent;
+  }
+}
+
+// ✅ Usuario solo llama a sendEmail con los parámetros necesarios
+console.log("=== Uso Correcto de Abstracción ===");
+const emailSender = new EmailSender();
+emailSender.sendEmail({
+  to: "destinatario@gmail.com",
+  subject: "Hola",
+  body: "Este es el cuerpo del mensaje",
+});
+
+export { emailSender };

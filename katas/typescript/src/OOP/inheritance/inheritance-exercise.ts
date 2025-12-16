@@ -18,3 +18,66 @@
 // Cuando termines, compara tu solución con inheritance-good.ts
 
 // Escribe tu solución aquí:
+
+class Animal {
+  protected name: string;
+  protected age: number;
+  protected weight: number;
+
+  constructor(name: string, age: number, weight: number) {
+    this.name = name;
+    this.age = age;
+    this.weight = weight;
+  }
+
+  public eat(): void {
+    console.log(`${this.name} está comiendo.`);
+  }
+
+  public sleep(): void {
+    console.log(`${this.name} está durmiendo.`);
+  }
+
+  public getInfo(): string {
+    return `Nombre: ${this.name}, Edad: ${this.age}, Peso: ${this.weight}`;
+  }
+}
+
+class Dog extends Animal {
+  public bark(): void {
+    console.log(`${this.name} dice: ¡Guau guau!`);
+  }
+}
+
+class Cat extends Animal {
+  public meow(): void {
+    console.log(`${this.name} dice: ¡Miau miau!`);
+  }
+}
+
+class Bird extends Animal {
+  public chirp(): void {
+    console.log(`${this.name} dice: ¡Pío pío!`);
+  }
+}
+
+// Ejemplo de uso
+console.log("=== Uso Correcto de Herencia ===");
+
+const dog = new Dog("Rex", 5, 25);
+const cat = new Cat("Luna", 3, 4);
+const bird = new Bird("Piolín", 1, 0.5);
+
+console.log(dog.getInfo());
+dog.eat();
+dog.bark();
+
+console.log(cat.getInfo());
+cat.eat();
+cat.meow();
+
+console.log(bird.getInfo());
+bird.eat();
+bird.chirp();
+
+export { Animal, Dog, Cat, Bird };
