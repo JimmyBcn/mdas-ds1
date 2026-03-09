@@ -1,0 +1,26 @@
+{
+  "name": "exam-recovery",
+  "version": "1.0.0",
+  "description": "Sistema de Gestión de Paquetes de Envío - Examen de Recuperación",
+  "type": "commonjs",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/main.js",
+    "dev": "tsc && node dist/main.js"
+  },
+  "keywords": [
+    "typescript",
+    "solid",
+    "design-patterns",
+    "factory",
+    "strategy",
+    "facade"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "typescript": "^5.9.3"
+  }
+}
