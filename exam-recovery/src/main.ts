@@ -15,18 +15,13 @@ function main(): void {
 
     console.log("Creando paquete de ejemplo...");
 
-    const standardPackage = {
-      ref: "PKG-2024-001",
-      type: "StandardPackage",
-      weigth: 10,
-      size: {
-        width: 50,
-        height: 50,
-        depth: 50,
-      },
-      senderName: "María García",
-      destination: "Madrid",
-    } as StandardPackage;
+    const standardPackage = new StandardPackage(
+      "PKG-2024-001",
+      10,
+      { width: 50, height: 50, depth: 50 },
+      "Juan Pérez",
+      "Calle Falsa 123, Ciudad"
+    );
 
     console.log("Creando paquete de ejemplo...");
     // Procesar un paquete estándar
